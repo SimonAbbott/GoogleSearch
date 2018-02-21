@@ -1,3 +1,0 @@
-21/02/2018 22:59:44 : Chrome Browser Launched
-21/02/2018 22:59:46 : Google Search for term testing
-21/02/2018 22:59:46 : Google Search did not return the expected value of https://en.wikipedia.org/wiki/Software_testing on the first page
