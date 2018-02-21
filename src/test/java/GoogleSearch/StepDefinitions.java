@@ -17,6 +17,7 @@ public class StepDefinitions {
 	
 	@When ("^I Google search for the term testing$")
 	public void iGoogleSearchForTheTerm() {
+		commonMethods.googleSearchForTerm("Testing");
     }
 	
 	@Then ("^The website https://en.wikipedia.org/wiki/Software_testing is displayed in the search results$")
