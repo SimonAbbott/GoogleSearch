@@ -20,7 +20,6 @@ public class CommonMethods {
 	
 	public void googleSearchForTerm(String searchString) {
 		wait = new WebDriverWait(this.browser, 5);
-		
 		WebElement searchInput = this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@title, 'Search')]")));
 		searchInput.sendKeys(searchString);
 		searchInput.sendKeys(Keys.ENTER);

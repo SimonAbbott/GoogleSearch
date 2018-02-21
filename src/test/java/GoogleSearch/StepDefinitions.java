@@ -15,9 +15,9 @@ public class StepDefinitions {
 		commonMethods.launchBrowser();
 	}
 	
-	@When ("^I Google search for the term testing$")
-	public void iGoogleSearchForTheTerm() {
-		commonMethods.googleSearchForTerm("Testing");
+	@When ("^I Google search for the term (.*)$")
+	public void iGoogleSearchForTheTerm(String searchString) {
+		commonMethods.googleSearchForTerm(searchString);
     }
 	
 	@Then ("^The website https://en.wikipedia.org/wiki/Software_testing is displayed in the search results$")
