@@ -1,0 +1,3 @@
+21/02/2018 23:13:52 : Chrome Browser Launched
+21/02/2018 23:13:53 : Google Search for term testing
+21/02/2018 23:13:53 : Google Search returned the expected value of https://en.wikipedia.org/wiki/Software_testing on the first page at position 1

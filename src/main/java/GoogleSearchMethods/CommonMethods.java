@@ -3,6 +3,7 @@ package GoogleSearchMethods;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -38,14 +39,24 @@ public class CommonMethods {
 		log.logToFile("Google Search for term " + searchTerm);
 	}
 	
-	public WebElement getSearchResults() {
-		return this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@data-async-context, 'query:" + searchTerm + "')]")));
+	public List<WebElement> getSearchResults() {
+		return browser.findElements(By.className("_Rm"));
 	}
 	
 	public Boolean isExpectedValueInResults(String expectedValue) throws IOException {
-		boolean result = getSearchResults().findElements(By.xpath("//*[contains(text(), '" + expectedValue +"')]")).size() > 0 ? true: false;
+		Boolean result = false; 
+		Integer i = 1;
+		
+		for(WebElement eachResult : getSearchResults()) {
+			if (eachResult.getText().toString().contains(expectedValue)) {
+				result = true;
+				break;
+			}
+			i++;
+		}
+		
 		if (result)
-			log.logToFile("Google Search returned the expected value of " + expectedValue + " on the first page");
+			log.logToFile("Google Search returned the expected value of " + expectedValue + " on the first page at position " + i.toString());
 		else 
 			log.logToFile("Google Search did not return the expected value of " + expectedValue + " on the first page");
 		return result;
