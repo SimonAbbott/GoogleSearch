@@ -12,7 +12,7 @@ Acceptance Criteria covered
 - The test should report the ranking of the pages found. (3rd, 7th, etc…)  
  -- The test report contains the position of every matching result.  
 - The report may take whatever form you like, but it must be persistent, not just console output (producing a txt file, log file or a webpage for example)  
- -- A text log is produced for every test.  
+ -- A text log is produced for every test. The log file can be found in the project folder src/test/resources/Logs  
 - The test should be able to handle the expected page appearing more than once in the search, and report on all instances.  
  -- The test report contains multiple positions if the result matches more than once.  
 
