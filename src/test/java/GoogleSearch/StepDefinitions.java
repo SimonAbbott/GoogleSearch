@@ -1,5 +1,6 @@
 package GoogleSearch;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -32,6 +33,11 @@ public class StepDefinitions {
 	@Then ("^The website (.*) is displayed in the search results$")
 	public void theWebsiteIsDisplayedInTheSeachResults(String expectedValue) throws IOException {
 		assertTrue(commonMethods.isExpectedValueInResults(expectedValue));
+	}
+	
+	@Then ("^The website (.*) is not displayed in the search results$")
+	public void theWebsiteIsNotDisplayedInTheSeachResults(String expectedValue) throws IOException {
+		assertFalse(commonMethods.isExpectedValueInResults(expectedValue));
 	}
 	
 	@After()

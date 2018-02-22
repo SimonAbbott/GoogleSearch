@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.StringJoiner;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -40,23 +41,25 @@ public class CommonMethods {
 	}
 	
 	public List<WebElement> getSearchResults() {
-		return browser.findElements(By.className("_Rm"));
+		WebElement searchResults = this.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@data-async-context, 'query:" + searchTerm + "')]")));
+		return searchResults.findElements(By.xpath("//div[contains(@class, 'f kv _SWb')]/cite"));
 	}
 	
 	public Boolean isExpectedValueInResults(String expectedValue) throws IOException {
 		Boolean result = false; 
-		Integer i = 1;
+		StringJoiner positions = new StringJoiner(", ");
 		
+		Integer i = 1;
 		for(WebElement eachResult : getSearchResults()) {
-			if (eachResult.getText().toString().contains(expectedValue)) {
+			if (eachResult.getText().contains(expectedValue)) {
 				result = true;
-				break;
+				positions.add(i.toString());
 			}
 			i++;
 		}
 		
 		if (result)
-			log.logToFile("Google Search returned the expected value of " + expectedValue + " on the first page at position " + i.toString());
+			log.logToFile("Google Search returned the expected value of " + expectedValue + " on the first page at position(s) " + positions.toString());
 		else 
 			log.logToFile("Google Search did not return the expected value of " + expectedValue + " on the first page");
 		return result;
